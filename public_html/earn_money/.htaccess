@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "earn_money"
+AuthUserFile "/home/snkbhim3/.htpasswds/public_html/earn_money/passwd"
+require valid-user
