@@ -3,7 +3,7 @@
 $host = "localhost";
 $uname = "root";
 $pass = "root";
-$db = "malgadi";
+$db = "db";
 mysql_connect($host,$uname,$pass)
 	or die("Error connecting database ".mysql_error());
 mysql_select_db($db)

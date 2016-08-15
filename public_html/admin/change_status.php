@@ -24,7 +24,7 @@ $mail->Host = "mail.malgadi.co.in";
 $mail->Port = 25;
 $mail->IsHTML(true);
 $mail->Username = "support@malgadi.co.in";
-$mail->Password = "SNK.bhimani3";
+$mail->Password = "password";
 $mail->SetFrom("support@malgadi.co.in");
 if($a['status']==="placed"){
 	$q = "UPDATE `orders` SET `status`='dispattched' WHERE `od_index`='".$od_index."'";
@@ -33,7 +33,7 @@ if($a['status']==="placed"){
 	$mail->Body = "<div>Hello ".$a['fname'].",<br>Your order of <b>".$aa['title']."</b> with Order ID: ".$a['odid']." has been dispattched. You will recive your product in 24-hours.<br>Keep ".($aa['price']-$aa['discount'])." &#8377; ready.<br>Thank you!<br>You can also view status at http://malgadi.co.in/chack_order.php<br>www.malgadi.co.in</div>";
 	$mail->AddAddress($a['email']);
 	$mail->Send();
-	sendWay2SMS ( "8460348865","cannotaccess",$a['mnumber'],"Your order of '".$aa['title']."' with Order ID: ".$a['odid']." has been dispattched. -www.malgadi.co.in");   
+	sendWay2SMS ( "8460348865","password",$a['mnumber'],"Your order of '".$aa['title']."' with Order ID: ".$a['odid']." has been dispattched. -www.malgadi.co.in");   
 }
 if($a['status']==="dispattched"){
 	$q = "UPDATE `orders` SET `status`='delivered' WHERE `od_index`='".$od_index."'";
@@ -43,7 +43,7 @@ if($a['status']==="dispattched"){
 	<br>www.malgadi.co.in</div>";
 	$mail->AddAddress($a['email']);
 	$mail->Send();
-		sendWay2SMS ( "8460348865","cannotaccess",$a['mnumber'],"Your order of '".$aa['title']."' with Order ID: ".$a['odid']." has been delivered. -www.malgadi.co.in");   
+		sendWay2SMS ( "8460348865","password",$a['mnumber'],"Your order of '".$aa['title']."' with Order ID: ".$a['odid']." has been delivered. -www.malgadi.co.in");   
 }
 if(isset($_SERVER['HTTP_REFERER'])){
 

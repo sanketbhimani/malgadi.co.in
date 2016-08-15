@@ -26,7 +26,7 @@ $mail->Host = "mail.malgadi.co.in";
 $mail->Port = 25;
 $mail->IsHTML(true);
 $mail->Username = "support@malgadi.co.in";
-$mail->Password = "SNK.bhimani3";
+$mail->Password = "password";
 $mail->SetFrom("support@malgadi.co.in");
 
 	

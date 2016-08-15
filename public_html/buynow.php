@@ -182,8 +182,8 @@ www.malgadi.co.in</div><br><br>
 $mail->Body = $email_body;
 	$mail->AddAddress($email);
 $mail->Send();
-sendWay2SMS ( "8460348865","cannotaccess",$mnumber,"Thank you for shopping with us. Your order ID for ".$cnt." item(s) is '".$odid."', www.malgadi.co.in"); 
-sendWay2SMS ( "8460348865","cannotaccess","9409506643,7567925394,9638438648","no of item:".$cnt.",total money:".$total.",name: ".$fname." ".$mnumber." -www.malgadi.co.in");   
+sendWay2SMS ( "8460348865","password",$mnumber,"Thank you for shopping with us. Your order ID for ".$cnt." item(s) is '".$odid."', www.malgadi.co.in"); 
+sendWay2SMS ( "8460348865","password","9409506643,7567925394,9638438648","no of item:".$cnt.",total money:".$total.",name: ".$fname." ".$mnumber." -www.malgadi.co.in");   
 unset($_SESSION['no_of_items']);
 unset($_SESSION['no_item_deleted']);
 $_SESSION['no_of_items'] = 0;
