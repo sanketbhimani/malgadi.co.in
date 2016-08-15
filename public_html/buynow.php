@@ -122,7 +122,7 @@ $mail->Host = "mail.malgadi.co.in";
 $mail->Port = 25;
 $mail->IsHTML(true);
 $mail->Username = "support@malgadi.co.in";
-$mail->Password = "SNK.bhimani3";
+$mail->Password = "password";
 $mail->SetFrom("support@malgadi.co.in");
 $mail->Subject = "About Order placed at malgadi.co.in";
 $email_body = "<div>Hello ".$fname.",<br>Your Order is successfully placed. You have ordered total ".$cnt." item(s).<br>Your Order ID is ".$odid.". This will be used in future for getting information about your Order.<br>More information about your order is can be seen at http://malgadi.co.in/chack_order.php
