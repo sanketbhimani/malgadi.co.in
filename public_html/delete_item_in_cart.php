@@ -4,6 +4,7 @@ if(isset($_GET['item'])){
 	include("connection.php");
 $item = mysql_real_escape_string($_GET['item']);
 unset($_SESSION['item'.$item]);
+unset($_SESSION['qty'.$item]);
 if(isset($_SESSION['no_item_deleted'])){
 	$_SESSION['no_item_deleted'] = $_SESSION['no_item_deleted']+1;
 }

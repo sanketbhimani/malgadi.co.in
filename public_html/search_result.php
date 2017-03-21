@@ -16,6 +16,10 @@ else{
 <head>
 <title>malgadi.co.in</title>
 <!-- for-mobile-apps -->
+
+	<link rel="shortcut icon" type="image/png" href="images/logo.png"/>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -31,7 +35,7 @@ else{
 <!-- //for bootstrap working -->
 
 <!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet"> 
+
 
 <!-- //animation-effect -->
 </head>
@@ -51,20 +55,57 @@ include("starter.php"); ?>
 			</ol>
 		</div>
 	</div>
+	
 	<div class="products">
-		<div class="container">
-			<div class="col-md-8 products-right">
-				<div class="products-right-grids-bottom">
+		<div class="container" style="width:95%;">
+			<div class="col-md-3 products-left" style="margin-top:-6%;">
+			
+			<div class="categories animated wow slideInUp" data-wow-delay=".5s" >
+					<h3>Categories</h3>
+					<ul class="cate">
+						<li><a href="index.php">Home</a> </li>
+						<?php
+  $xml = new SimpleXMLElement(file_get_contents("m/malgadi.xml"));
+				$cnt = 0;
+				foreach ($xml->departments->department as $element) {
+					?>
+					<li><a href="items.php?id=<?php echo($element['id']); ?>&name=<?php echo($element); ?>" <?php if(strpos($_SERVER[ 'REQUEST_URI'], $element)===false){ } else{ echo( " class='act'"); } ?>><?php echo($element); ?></a></li>
+					
+					<?php
+				}
+  
+  
+  ?>
+								<li><a href="review_us.php">Review Us</a> </li>
+							
+					</ul>
+				</div>
+			
+			</div>
+			<div class="col-md-9 products-right products-right-grids-bottom" style="margin-top:-2.4%; padding-left:24px; padding-right:12px;">
+			
+				
 
 <?php
-	
+
+
+
 $tag =	mysql_real_escape_string($_GET['tag']);
 $q = "SELECT * FROM `items` WHERE `title` REGEXP '[\\d \\D \\S \\s]*".$tag."[\\d \\D \\S \\s]*' OR `subtitle` REGEXP '[\\d \\D \\S \\s]*".$tag."[\\d \\D \\S \\s]*'";
-$r = mysql_query($q);
+$r = mysql_query($q)
+or die(mysql_error());
 
 	?>
-	
+
 	<?php include("main_course.php"); ?>
+
+	
+	
+	
+	</div>
+</div>
+</div>
+	
 	
 	
 <!-- //breadcrumbs -->

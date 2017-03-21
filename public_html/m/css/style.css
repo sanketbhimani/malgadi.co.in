@@ -1,0 +1,87 @@
+ .item{
+	height:150px;
+	overflow: hidden;
+	border: solid #ccc;
+	border-width: 0px 1px 1px 0px;
+	border-radius: 6px;
+	padding: 6px;
+ }
+ .item_image{
+	width:100%;
+ }
+ .item_image_container{
+	height:120px;
+	width:30%;
+	overflow: hidden;
+ }
+ .title{
+	font-size:18px;
+	font-weight:600;
+	color: #555;
+	max-height:81px;
+	height:auto;
+	overflow:hidden;
+ }
+ .subtitle{
+	margin-top:3px;
+	font-size:15px;
+	color: #555;
+	max-height:20px;
+	height:auto;
+	overflow:hidden;
+ }
+ .item_container{
+	padding: 3px !important;
+ }
+ .items_container{
+	margin: 3px !important;
+ }
+ .poster{
+	width:100%;
+ }
+ .unslider{
+	height:270px;			
+	overflow: hidden;
+ }
+ .item_price{
+	margin-top:3px;
+	font-size:18px;
+	font-weight:600;
+	height: 30px;
+ }
+ .item_title{
+	font-size:36px;
+ }
+ .item_subtitle{
+	font-size:18px;
+	font-weight:700;
+ }
+ .shopping_btn{
+	height:45px;
+ }
+ .shopping_btns{
+	padding-left:30px;
+ }
+ .price{
+	margin: 0px;
+	font-size:21px;
+	font-weight:600;
+ }
+ .discount{
+	margin: 0px;
+	font-size:21px;
+	font-weight:600;
+	border: solid #ccc;
+	border-width: 0px 0px 1px 0px;
+ }
+ .total{
+	margin: 0px;
+	font-size:21px;
+	font-weight:600;
+ }
+ .description{
+	font-size: 18px;
+ }
+ .cart_item{
+	 height:210px;
+ }

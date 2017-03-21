@@ -1,0 +1,9 @@
+<malgadi Version="1.0">
+   <departments>
+	<department id="1">Basic Componants</department>
+	<department id="2">Robotics</department>
+	<department id="3">Controllers</department>
+	<department id="4">Sensors</department>
+	<department id="5">Kits</department>
+   </departments>
+</malgadi>

@@ -12,16 +12,16 @@ $_SESSION['odid'] = null;
 	if(!isset($_SESSION['no_of_items'])){
 		if(isset($_SERVER['HTTP_REFERER'])){
 	header("location:".$_SERVER['HTTP_REFERER']);
-	//die();
+	die();
 }else{
 	header("location:index.php");
-	//die();
+	die();
 }
 	}else{
 		if($_SESSION['no_of_items']==0){
 			
 		header("location:something_went_wrong.php");
-					//die();
+					die();
 		}
 	}
 	
@@ -33,6 +33,9 @@ $_SESSION['odid'] = null;
 <head>
 <title>malgadi.co.in</title>
 <!-- for-mobile-apps -->
+<link rel="shortcut icon" type="image/png" href="images/logo.png"/>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -48,7 +51,7 @@ $_SESSION['odid'] = null;
 <!-- //for bootstrap working -->
 
 <!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet"> 
+
 
 <!-- //animation-effect -->
 </head>
@@ -64,7 +67,14 @@ if(isset($_GET['msg'])){
 <!-- header -->
 	
 	<?php
-include("starter.php"); ?>	
+include("starter.php");
+
+if($total < 50){
+	header("location:something_went_wrong.php");
+					die();
+}
+ ?>	
+
 <!-- //header -->
 <!-- breadcrumbs -->
 	<div class="breadcrumbs">
@@ -81,8 +91,27 @@ include("starter.php"); ?>
 		<div class="alert alert-success" role="alert">
 					<strong>Well done!</strong> You have successfully selected product(s), now fill up following details to complete your order, Thank you! :)
 				</div>
+		<script>
+	<?php/*	function city(){
+			if($('#other_city').val()=="nadiad"){
+				$( '#ccity' ).prop( "disabled", true );
+				$( '#city_hidden' ).prop( "disabled", false );
+				$('#ccity').val("nadiad");
+				$('#cod').prop( "disabled", false );
+			}else{
+				alert("for outside of nadiad cash on delivery option is not avilable and extra delivery charges of rupees 60 will be applied.");
+				$( '#ccity' ).prop( "disabled", false );
+				$( '#city_hidden' ).prop( "disabled", true );
+				$('#ccity').val("");
+				$('#cod').prop( "disabled", true );
+				$('#instamojo').prop( "checked", true );
+				
+			}
+		}*/
 		
-		<form action="buynow.php" method="post" onsubmit=" return chack()">
+		?>
+		</script>
+		<form action="payment.php" method="post" onsubmit=" return chack()">
 		<table class="timetable_sub" style="width:90%">
 			<tr>
 				<td style="border: 0px; text-align:left; width:21%; overflow:show;">Full name: </td>
@@ -102,11 +131,23 @@ include("starter.php"); ?>
 							<tr>
 							<td style="border: 0px; text-align:left;">Address: </td>
 				<td style="border: 0px;"><input id="address" type="text" class="form-control" name="address1" placeholder="Your Address" aria-describedby="basic-addon1" value="<?php if(isset($_COOKIE['address1'])) echo($_COOKIE['address1']); ?>"></td>
-				<td style="border: 0px; text-align:left;"></td>
+				
+				<td style="border: 0px; text-align:left;"><?php //City  ?></td>
+				<td style="border: 0px;">
+			<?php	//<select class="form-control" aria-describedby="basic-addon1" id="other_city" onchange="city();">
+  //<option value="nadiad">Nadiad</option>
+  //<option value="other">Other</option>
+//</select> ?>
+				
+				<!--<input id="city" type="text" class="form-control" name="ccity" placeholder="City" aria-describedby="basic-addon1" value="<?php if(isset($_COOKIE['ccity'])) echo($_COOKIE['ccity']); ?>">--></td>
 				<tr><td style="border: 0px; text-align:left;"></td>
 				<td style="border: 0px;"><input type="text" name="address2" class="form-control" placeholder="Street Name" aria-describedby="basic-addon1" value="<?php if(isset($_COOKIE['address2'])) echo($_COOKIE['address2']); ?>"></td>
-				<td style="border: 0px; text-align:left;">City</td>
-				<td style="border: 0px;"><input id="city" type="text" class="form-control" name="ccity" placeholder="City" aria-describedby="basic-addon1" value="<?php if(isset($_COOKIE['ccity'])) echo($_COOKIE['ccity']); ?>"></td>
+				<td style="border: 0px; text-align:left;">name of city:</td>
+				<td style="border: 0px;"><input id="ccity" type="text" name="ccity" class="form-control" placeholder="Verify Twice" aria-describedby="basic-addon1" value="nadiad" disabled>
+				<input id="city_hidden" type="hidden" name="ccity" class="form-control" placeholder="Verify Twice" aria-describedby="basic-addon1" value="nadiad">
+				</td>
+				
+				
 				
 			</tr>
 				
@@ -117,10 +158,20 @@ include("starter.php"); ?>
 				<td style="border: 0px; text-align:left;">E-mail: </td>
 				<td style="border: 0px;"><input id="email" type="email" name="email" class="form-control" placeholder="Verify Twice" aria-describedby="basic-addon1" value="<?php if(isset($_COOKIE['email'])) echo($_COOKIE['email']); ?>"></td>
 				
+				<td style="border: 0px; text-align:left;">Payment mode: </td>
+				<td style="border: 0px;"><input id="cod" type="radio" name="payment" value="cod" aria-describedby="basic-addon1" checked>&nbsp;Cash on delivery
 				
+				<?php //&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="instamojo" type="radio" name="payment" value="instamojo" aria-describedby="basic-addon1">&nbsp;Online payment<br> (Online payment will proceed through Instamojo payment gateway)
+				
+				?>
+				
+				</td>
+				<br><br><br>
+				<td style="border: 0px; text-align:left;"> For Express Delivery(Same day delivery) contact on : +917069936320 / +918141192497 . </td>
 			</tr>
 
 		</table>
+		
 		<center>
 		<!--<br>
 		Refer Code: <input  type="text" name="refer_code" id="refer_code" class="form-control" placeholder="Refer Code" aria-describedby="basic-addon1" style="width:15%;">-->
@@ -155,7 +206,7 @@ include("starter.php"); ?>
 				alert("your address field is empty");
 				return false;
 			}
-			if(document.getElementById('city').value==''){
+			if(document.getElementById('ccity').value==''){
 				alert("your city field is empty");
 				return false;
 			}

@@ -8,15 +8,43 @@ else{
 	header("location:index.php");
 }
 }
+$id =  mysql_real_escape_string($_GET['item']);
+$t = time()+(3*365*24*60*60);
+$f = 0;
+for($i=0;$i<6;$i++){
+	if(!isset($_COOKIE['item'.$i])){
+		if($i != 0){
+			for($j=$i-1;$j>=0;$j--){
+				$f = 0;
+				if(isset($_COOKIE['item'.$j])){
+				if($_COOKIE['item'.$j] == $id){
+					$f = 1;
+					break;
+				}
+			}
+			}
+		}
+		if($f == 0){
+			setcookie("item".$i,$id,$t);
+			break;
+		}
+	}
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>malgadi.co.in</title>
-<!-- for-mobile-apps -->
+<!-- //for-mobile-apps -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
+
+<link rel="shortcut icon" type="image/png" href="images/logo.png"/>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
@@ -27,16 +55,8 @@ else{
 <!-- for bootstrap working -->
 	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
-
-<!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet"> 
-<!--
-<script src="js/wow.min.js"></script>
-<script>
- new WOW().init();
-</script>
--->
-<!-- //animation-effect -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 </head>
 	
 <body>
@@ -50,7 +70,7 @@ else{
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated slideInLeft">
 				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">item</li>
+				<li class="active">Product</li>
 			</ol>
 		</div>
 	</div>
@@ -63,7 +83,7 @@ else{
 					<div class="flexslider">
 						<ul class="slides">
 						<?php
-					$id =  mysql_real_escape_string($_GET['item']);
+					
 						include("connection.php");
 
 						$q = "SELECT COUNT(*) FROM `items` WHERE `index` = '".$id."'";
@@ -187,8 +207,24 @@ if(!$a['COUNT(*)']){
 					</div>
 					<br><br>
 					<div class="occasion-cart">
+						<?php
+					if($a['out_of_stock']==1){
+					?>
+<img src="images/oos1.png" style="width:30%;">
+			<a class="item_add" href="click_to_notify.php?item=<?php echo($a['index']); ?>">click to notify</a>		
+<?php					
+					}else{
+					?>
 						<a class="item_add" href="add_to_cart.php?index=<?php echo($a['index']); ?>">add to cart </a>
 						<a class="item_add" href="buy_now.php?index=<?php echo($a['index']); ?>" style="margin-left:3%; padding-left:5.1%; padding-right:5.1%;">buy now</a>
+						<br><br>
+						<h4 style="font-size: 15px;"> *Standard Delivery: (Free) Generally it can take 3-5 working days.<br><br> *Express Delivery: (Additional Rs. 20) Same day delivery.<br><br></h4>
+						
+						<h4 style="font-size: 10px; text-align: right;">* : Terms and Coditions apply.</h4>
+						
+						<?php
+						}						
+						?>
 					</div>
 				</center>
 				</div>

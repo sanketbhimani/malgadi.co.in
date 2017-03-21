@@ -4,6 +4,10 @@
 <head>
 <title>malgadi.co.in</title>
 <!-- for-mobile-apps -->
+
+	<link rel="shortcut icon" type="image/png" href="images/logo.png"/>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -19,7 +23,7 @@
 <!-- //for bootstrap working -->
 
 <!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet"> 
+
 
 <!-- //animation-effect -->
 </head>
@@ -99,6 +103,8 @@ if(isset($_POST['name']) && $_POST['name']!='' && isset($_POST['email']) && $_PO
 	$q = "INSERT INTO `reviews` (`name`, `email`, `mobile_no`, `subject`, `message`) VALUES('".$name."', '".$email."', '".$mobile_no."', '".$subject."', '".$message."')";
 	mysql_query($q)
 	or die(mysql_error());
+	 include('sms/way2sms-api.php');
+	sendWay2SMS ( "9409506643","123456","7069936320","rvw,".$subject.",".$name.",".$mobile_no." ");   
 	?>
 			<div class="alert alert-success" role="alert">
 					<strong>Thank You!</strong> You successfully submited a review.
@@ -109,15 +115,15 @@ if(isset($_POST['name']) && $_POST['name']!='' && isset($_POST['email']) && $_PO
 
 ?>
 			<h3>Review Us</h3>
-			<p class="est">Your review is our opportunity. So we are eager read your valuable review! :)</p>
+			<p class="est">Your review is our opportunity to learn, We are eager to read your valuable review! :)</p>
 			<div class="mail-grids">
 				<div class="col-md-8 mail-grid-left animated wow slideInLeft" data-wow-delay=".5s">
 					<form action="review_us.php" method="post">
-						<input type="text" value="Name" name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-						<input type="email" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-						<input type="text" value="mobile no." name="mobile_no" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mobile no';}" required="">
-						<input type="text" value="Subject" style="margin:1em 0;" name="subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" required="">
-						<textarea type="text"   name="message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+						<input type="text" placeholder="Name" name="name" required="">
+						<input type="email" placeholder="Email" name="email" required="">
+						<input type="text" placeholder="mobile no." name="mobile_no" required="">
+						<input type="text" placeholder="Subject" style="margin:1em 0;" name="subject" required="">
+						<textarea type="text"   name="message" placeholder="Message..." required=""></textarea>
 						<input type="submit" value="Submit Now" >
 					</form>
 				</div>

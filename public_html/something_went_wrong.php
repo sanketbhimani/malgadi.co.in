@@ -6,6 +6,9 @@
 <!-- for-mobile-apps -->
 
 
+<link rel="shortcut icon" type="image/png" href="images/logo.png"/>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -34,7 +37,7 @@ $('.slider').sss();
 <link rel="stylesheet" href="css/jquery.countdown.css" />
 <!-- //timer -->
 <!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet"> 
+
 <!--
 <script src="js/wow.min.js"></script>
 <script>
